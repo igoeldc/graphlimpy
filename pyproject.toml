@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graphlimpy"
+version = "0.1.0"
+description = "A lightweight Python toolkit for exploring graphons, graph limits, and cut distance."
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "numpy",
+    "matplotlib",
+]
+authors = [
+    {name = "Ishaan Goel"},
+]
+keywords = ["graphons", "graph limits", "graph theory", "networks"]
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+
+[project.urls]
+Homepage = "https://github.com/igoeldc/graphlimpy"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["graphlimpy*"]
+
+[project.scripts]
+# These allow users to run demos as commands after installing the package
+graphlim-demo-sampling = "demos.demo_sampling:main"
+graphlim-demo-stats = "demos.demo_stats_convergence:main"
+graphlim-demo-step = "demos.demo_step_graphon:main"
+graphlim-demo-cut = "demos.demo_cut_reorder:main"
+graphlim-demo-rearrange = "demos.demo_rearrange_graphon:main"
+
+exclude = ["notebooks*"]

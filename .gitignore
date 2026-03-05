@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# IDEs (Optional but common)
+.vscode/
+.idea/
