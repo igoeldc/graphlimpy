@@ -388,21 +388,31 @@ Possible later additions:
 ## Example Session
 
 ```python
-from graphlimpy.graphons import half_graphon
+import matplotlib.pyplot as plt
+from graphlimpy.graphons import half_graphon, constant
 from graphlimpy.sample import sample_GnW
 from graphlimpy.viz import plot_graphon, plot_adj
 from graphlimpy.cut import cut_distance_graphons
 
+# 1. Define and visualize a graphon
 W = half_graphon()
+plot_graphon(W, title="Half Graphon")
 
-plot_graphon(W)
+# 2. Sample a graph and visualize its adjacency matrix
+A, u = sample_GnW(W, n=400)
+plot_adj(A, title="Sampled Graph (Raw)")
+plot_adj(A, order=u.argsort(), title="Sampled Graph (Sorted by latent u)")
 
-A, u = sample_GnW(W, 400)
+# 3. Compute cut distance
+# Distance to self should be 0
+dist_self = cut_distance_graphons(W, W)
+# Distance to a constant graphon (p=0.5) should be non-zero
+dist_other = cut_distance_graphons(W, constant(0.5))
 
-plot_adj(A)
-plot_adj(A, order=u.argsort())
+print(f"Distance to self: {dist_self:.4f}")
+print(f"Distance to constant(0.5): {dist_other:.4f}")
 
-print(cut_distance_graphons(W, W))
+plt.show()
 ```
 
 
