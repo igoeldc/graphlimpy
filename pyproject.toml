@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "graphlimpy"
-version = "0.1.0"
+version = "0.2.0"
 description = "A lightweight Python toolkit for exploring graphons, graph limits, and cut distance."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -29,14 +29,12 @@ Homepage = "https://github.com/igoeldc/graphlimpy"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["graphlimpy*"]
+include = ["graphlimpy*", "demos*"]
+exclude = ["notebooks*"]
 
 [project.scripts]
-# These allow users to run demos as commands after installing the package
 graphlim-demo-sampling = "demos.demo_sampling:main"
 graphlim-demo-stats = "demos.demo_stats_convergence:main"
 graphlim-demo-step = "demos.demo_step_graphon:main"
 graphlim-demo-cut = "demos.demo_cut_reorder:main"
 graphlim-demo-rearrange = "demos.demo_rearrange_graphon:main"
-
-exclude = ["notebooks*"]
